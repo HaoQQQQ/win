@@ -45,12 +45,49 @@
         align-items: center;
         justify-content: center;
       }
+      .small {
+        width: 80px;
+        height: 80px;
+        float: left;
+      }
+      .picSmall {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        margin-left: 450px;
+      }
+      .campName {
+        display: flex;
+        align-items: center;
+        padding-top: 100px;
+      }
+      .line {
+        width: 20%;
+        height: 1px;
+        border-top: solid black;
+        margin-left: 600px;
+      }
+      .labelGroup{
+        display: inline-flex;
+        margin-left: 660px;
+        padding-top: 10px;
+      }
+      .labelA{
+        background-color: orangered;
+      }
+      .labelB{
+        background-color: lightgreen;
+      }
+      .labelC{
+        background-color:darkgreen;
+      }
     </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-success bg-success">
       <a class="navbar-brand" href="#">
-        <img src="/win/images/logo.svg" width="50" height="50" alt="" />
+        <img src="/images/logo.svg" width="50" height="50" alt="" />
       </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="form-inline">
@@ -92,29 +129,62 @@
                   <a class="dropdown-item" href="#">鐘型帳</a>
                 </ul>
                 <ul>
-                  <a class="dropdown-item" href="#">露營設備</a>
+                  <a class="dropdown-item" href="#">環境特色</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">狩獵帳</a>
-                  <a class="dropdown-item" href="#">TEE PEE</a>
-                  <a class="dropdown-item" href="#">露營車</a>
-                  <a class="dropdown-item" href="#">星空帳</a>
-                  <a class="dropdown-item" href="#">泡泡帳</a>
-                  <a class="dropdown-item" href="#">鐘型帳</a>
+                  <a class="dropdown-item" href="#">草皮</a>
+                  <a class="dropdown-item" href="#">森林</a>
+                  <a class="dropdown-item" href="#">溫泉</a>
+                  <a class="dropdown-item" href="#">海邊</a>
+                  <a class="dropdown-item" href="#">湖邊</a>
+                  <a class="dropdown-item" href="#">河邊</a>
                 </ul>
                 <ul>
-                  <a class="dropdown-item" href="#">露營設備</a>
+                  <a class="dropdown-item" href="#">北部</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">狩獵帳</a>
-                  <a class="dropdown-item" href="#">TEE PEE</a>
-                  <a class="dropdown-item" href="#">露營車</a>
-                  <a class="dropdown-item" href="#">星空帳</a>
-                  <a class="dropdown-item" href="#">泡泡帳</a>
-                  <a class="dropdown-item" href="#">鐘型帳</a>
+                  <a class="dropdown-item" href="#">新北市</a>
+                  <a class="dropdown-item" href="#">台北市</a>
+                  <a class="dropdown-item" href="#">桃園市</a>
+                  <a class="dropdown-item" href="#">新竹市</a>
+                  <a class="dropdown-item" href="#">新竹縣</a>
+                </ul>
+                <ul>
+                  <a class="dropdown-item" href="#">中部</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">苗栗縣</a>
+                  <a class="dropdown-item" href="#">台中市</a>
+                  <a class="dropdown-item" href="#">彰化縣</a>
+                  <a class="dropdown-item" href="#">南投縣</a>
+                  <a class="dropdown-item" href="#">雲林縣</a>
+                </ul>
+                <ul>
+                  <a class="dropdown-item" href="#">南部</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">嘉義市</a>
+                  <a class="dropdown-item" href="#">嘉義縣</a>
+                  <a class="dropdown-item" href="#">台南市</a>
+                  <a class="dropdown-item" href="#">高雄市</a>
+                  <a class="dropdown-item" href="#">屏東縣</a>
+                  <a class="dropdown-item" href="#">澎湖縣</a>
+                </ul>
+                <ul>
+                  <a class="dropdown-item" href="#">東部</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">宜蘭縣</a>
+                  <a class="dropdown-item" href="#">花蓮縣</a>
+                  <a class="dropdown-item" href="#">台東縣</a>
+                </ul>
+                <ul>
+                  <a class="dropdown-item" href="#">專欄介紹</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">寵物</a>
+                  <a class="dropdown-item" href="#">手作體驗</a>
+                  <a class="dropdown-item" href="#">櫻花祭</a>
+                  <a class="dropdown-item" href="#">客家桐花季</a>
                 </ul>
               </div>
             </div>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropleft">
             <a
               class="nav-link dropdown-toggle"
               href="#"
@@ -125,11 +195,31 @@
             >
               商品瀏覽
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">環保餐具</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">水壺</a>
-              <a class="dropdown-item" href="#">餐具組</a>
+            <div class="dropdown-menu" role="menu">
+              <div class="d-flex">
+                <ul>
+                  <a class="dropdown-item" href="#">環保餐具</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">水壺</a>
+                  <a class="dropdown-item" href="#">餐具組</a>
+                </ul>
+                <ul>
+                  <a class="dropdown-item" href="#">環保家具</a>
+                  <div class="dropdown-divider"></div>
+                </ul>
+                <ul>
+                  <a class="dropdown-item" href="#">露營裝備</a>
+                  <div class="dropdown-divider"></div>
+                </ul>
+                <ul>
+                  <a class="dropdown-item" href="#">禮物卡</a>
+                  <div class="dropdown-divider"></div>
+                </ul>
+                <ul>
+                  <a class="dropdown-item" href="#">點數兌換</a>
+                  <div class="dropdown-divider"></div>
+                </ul>
+              </div>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -169,6 +259,44 @@
         <div class="list_item">
           <img class="pic polygon" src="./images/camp1.jpg" alt="" />
         </div>
+        <div class="small">
+          <img class="picSmall" src="/images/camp1.jpg" alt="" />
+        </div>
+        <div class="small">
+          <img class="picSmall" src="/images/camp2.jpg" alt="" />
+        </div>
+        <div class="small">
+          <img class="picSmall" src="/images/camp3.jpg" alt="" />
+        </div>
+        <div class="small">
+          <img class="picSmall" src="/images/camp4.jpg" alt="" />
+        </div>
+        <div class="small">
+          <img class="picSmall" src="/images/camp5.jpg" alt="" />
+        </div>
+        <div class="small">
+          <img class="picSmall" src="/images/camp6.jpg" alt="" />
+        </div>
+        <div class="small">
+          <img class="picSmall" src="/images/camp7.jpg" alt="" />
+        </div>
+        <div class="small">
+          <img class="picSmall" src="/images/camp8.jpg" alt="" />
+        </div>
+        <div class="campName">
+          <h1>滾草地露營</h1>
+        </div>
+        <div class="line"></div>
+        <div class="labelGroup">
+          <div class="labelA">
+            <h5>基隆市</h5>
+          </div>
+          <div class="labelB">
+            <h5>草地</h5>
+          </div>
+          <div class="labelC">
+            <h5>TEEPEE</h5>
+          </div>
       </div>
     </div>
   </body>
