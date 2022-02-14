@@ -1,0 +1,15 @@
+.container {
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    max-width: 1470px;
+  }
+.bookingTitle{
+    text-align: center;
+}
+.tri{
+    fill: rgba(193, 95, 46, 1);
+    stroke: rgba(193, 95, 46, 1);
+    /* stroke-width: 10; */
+    stroke-width: 60;
+}
