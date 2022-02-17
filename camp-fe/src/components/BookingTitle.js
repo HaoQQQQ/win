@@ -20,6 +20,10 @@ function BookingTitle() {
         <h3 className="checkout-flow-deliver">付款資訊</h3>
       </div>
       <div className="cart-dividing-line-full"></div>
+<<<<<<< HEAD
+      
+=======
+>>>>>>> 3af557f0b6198f26a36af1d3524a5bd0a1f7f280
     </>
   );
 }
