@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // App.js
 
 import React from "react";
@@ -47,3 +48,33 @@ class LeafletMap extends React.Component {
 }
 
 export default LeafletMap;
+=======
+import { DatePicker, Space } from 'antd';
+import React from 'react';
+import { ReactDOM } from 'react';
+
+const { RangePicker } = DatePicker;
+
+function onChange(value, dateString) {
+  console.log('Selected Time: ', value);
+  console.log('Formatted Selected Time: ', dateString);
+}
+
+function onOk(value) {
+  console.log('onOk: ', value);
+}
+
+ReactDOM.render(
+  <Space direction="vertical" size={12}>
+    <DatePicker showTime onChange={onChange} onOk={onOk} />
+    <RangePicker
+      showTime={{ format: 'HH:mm' }}
+      format="YYYY-MM-DD HH:mm"
+      onChange={onChange}
+      onOk={onOk}
+    />
+  </Space>,
+  mountNode,
+);
+
+>>>>>>> a0cc1163caf8cf92296bead83e0942c73ce6b8c2

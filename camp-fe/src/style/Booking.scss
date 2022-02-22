@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .banner {
  
   margin-top: 42px;
@@ -45,4 +46,54 @@
 }
 i{
   // display: none;
+=======
+.banner {
+ 
+  margin-top: 42px;
+  display: flex;
+  justify-content: center;
+}
+.a {
+  width: 1745px;
+  height: 269px;
+}
+.container {
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+}
+
+.picB {
+  
+  object-fit: cover;
+    width: 100%;
+    height: 100%;
+  
+  
+}
+.bookingInfo{
+  text-align: center;
+  padding-top: 35px;
+}
+.map {
+  width: 802px;
+  height: 560px;
+  background-color: burlywood;
+}
+.customer-rate{
+  height: 24px;
+  margin-left: 170px;
+}
+.addActs{
+  text-align: center;
+  padding-top: 35px;
+
+}
+.addActsBlockB{
+  margin-top: 25px;
+  margin-bottom: 78px;
+}
+i{
+  // display: none;
+>>>>>>> a0cc1163caf8cf92296bead83e0942c73ce6b8c2
 }
