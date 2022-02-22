@@ -43,6 +43,15 @@ app.use(express.json());
 let campRouter = require("./routers/campDetail");
 app.use("/api/camp", campRouter);
 
+app.get("/api/camp/:campId", async (req, res, next) => {
+  //req.params.campId
+  let [data, field] = await connection.execute(
+    "SELECT * FROM camp WHERE id=?",
+    [req.params.campId]
+  );
+  res.json(data);
+});
+
 app.use((req, res, next) => {
   console.log("在所有路由中間件的後面 -> 404");
   res.status(404).send("Not Found");
