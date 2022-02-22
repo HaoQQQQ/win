@@ -8,12 +8,12 @@ let getAll = async (req, res, next) => {
   res.json(data);
 };
 
-let countByCode = async (req, res, next) => {
-  let total = await campModel.countByCode(req.params.campId);
+// let countByCode = async (req, res, next) => {
+//   let total = await campModel.countByCode(req.params.campId);
 
-  res.json(total);
-};
+//   res.json(total);
+// };
 module.exports = {
   getAll,
-  countByCode,
+//   countByCode,
 };
