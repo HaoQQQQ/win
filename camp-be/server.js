@@ -40,6 +40,8 @@ app.use(express.json());
 //   // throw new Error("故意製造的錯誤");
 //   next();
 // });
+
+//不能並存 WHY??
 let campRouter = require("./routers/campDetail");
 app.use("/api/camp", campRouter);
 
