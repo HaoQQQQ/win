@@ -1,5 +1,5 @@
 .list_item {
-    width: 1440px;
+    max-width: 1440px;
     height: 632px;
     
   }
@@ -78,7 +78,7 @@
   }
   .campIntro{
     margin: auto;
-    width: 1120px;
+    max-width: 1120px;
     text-align: center;
   }
   .A{
@@ -103,18 +103,19 @@
     margin-left: 80px;
     margin-top: 50px;
   }
-  .map {
+  .mapA {
     width: 697px;
     height: 505px;
-    background-color: burlywood;
+    // background-color: burlywood;
   }
   .B {
     display: flex;
+    // height: 1020px;
   }
   .dateTable {
     width: 697px;
     height: 450px;
-    background-color: cadetblue;
+    // background-color: cadetblue;
     margin-top: 39px;
   }
   .tentBlockA {
