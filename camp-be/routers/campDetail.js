@@ -6,6 +6,6 @@ const campController = require("../controllers/campDetail");
 
 // RESTful API 的列表
 router.get("/", campController.getAll);
-router.get("/:campId", campController.countByCode);
+// router.get("/:campId", campController.countByCode);
 
 module.exports = router;
