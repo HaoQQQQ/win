@@ -41,7 +41,6 @@ app.use(express.json());
 //   next();
 // });
 
-//不能並存 WHY??
 let campRouter = require("./routers/campDetail");
 app.use("/api/camp", campRouter);
 
