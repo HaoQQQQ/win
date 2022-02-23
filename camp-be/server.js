@@ -52,6 +52,8 @@ app.get("/api/camp/:campId", async (req, res, next) => {
   );
   res.json(data);
 });
+// 單一營地圖片
+app.use("/camp-pic", express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
   console.log("在所有路由中間件的後面 -> 404");
