@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import "./style/App.css";
 
 // import Navbar from "./components/navbar/navbar";
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/NavBar";
 // import Home from "./pages/home";
 // import Products from "./components/Products";
 // import ProductDetail from "./components/ProductDetail";
@@ -16,20 +16,21 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Footer from "./components/Footer";
 // import Home from "./pages/home";
 import CampDetail from "./components/CampDetail";
-import Booking from "./components/Booking";
+// import Booking from "./components/Booking";
 import PicSlider from "./components/PicSlider";
+import Test from "./components/Test";
 
 function App() {
   return (
     <>
       <div className="App">
         <BrowserRouter>
-          {/* <Navbar /> */}
+          <Navbar />
           <Routes>
-            <Route path="/" exact element={<PicSlider />} />
+            {/* <Route path="/" exact element={<Test />} /> */}
             {/* <Route path="/products" element={<Products />} /> */}
             {/* <Route path="/products/:productId" element={<ProductDetail />} /> */}
-            {/* <Route path="/camp/:campId" element={<CampDetail />} /> */}
+            <Route path="/camp/:campId" element={<CampDetail />} />
 
             {/* <Route path="/p_orders/cart" element={<ShoppingCart />} /> */}
             {/* <Route path="/p_orders/payment" element={<PaymentForGoods />} /> */}
