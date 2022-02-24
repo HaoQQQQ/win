@@ -58,7 +58,7 @@ function CampDetail() {
                 <div className="line" />
                 <div className="labelGroup">
                   <div className="labelA">
-                    <h5>基隆市</h5>
+                    <h5>{item.camp_county}</h5>
                   </div>
                   <div className="labelB">
                     <h5>草地</h5>
@@ -68,7 +68,7 @@ function CampDetail() {
                   </div>
                 </div>
                 <div className="address">
-                  <h5>205 基隆市暖暖區東勢街221號(暖東峽谷)</h5>
+                  <h5>{item.camp_add}</h5>
                 </div>
                 <div className="campIntro">
                   <h5>{item.camp_intro}</h5>
