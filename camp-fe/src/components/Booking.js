@@ -1,9 +1,8 @@
-
 import React from "react";
 import BookingTitle from "./BookingTitle";
 import "../style/Booking.scss";
-import "react-date-range/dist/styles.css"; // main style file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "react-date-range/src/styles.scss"; // main style file
+import "react-date-range/src/theme/default.scss"; // theme css file
 import { DateRange } from "react-date-range";
 import { useState } from "react";
 
