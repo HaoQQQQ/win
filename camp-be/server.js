@@ -47,7 +47,7 @@ app.use("/api/camp", campRouter);
 app.get("/api/camp/:campId", async (req, res, next) => {
   //req.params.campId
   let [data, field] = await connection.execute(
-    "SELECT * FROM(camp JOIN camp_county ON camp.campcounty_id = camp_county.Yid ) JOIN camp_pic ON camp.Cid = camp_pic.id WHERE Cid=?",
+    "SELECT * FROM((((camp JOIN camp_county ON camp.campcounty_id = camp_county.Yid ) JOIN camp_pic ON camp.Cid = camp_pic.id) JOIN camp_cate1 ON camp.campcate1_id = camp_cate1.id)JOIN tent ON camp.Cid = tent.camp_id)JOIN tent_cate1 ON tent.tentcate_id = tent_cate1.id WHERE Cid=?",
     [req.params.campId]
   );
   res.json(data);
