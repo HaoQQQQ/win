@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 import "../style/CampDetail.scss";
@@ -37,24 +37,34 @@ function CampDetail() {
       key: "selection",
     },
   ]);
+  const [camp, setCamp] = useState([]);
   const [data, setData] = useState([]);
+  const [tentdata, setTentData] = useState([]);
   const { campId } = useParams();
   useEffect(() => {
     let getCamp = async () => {
       let response = await axios.get(
         `http://localhost:3002/api/camp/${campId}`
       );
+      let response1 = await axios.get(
+        `http://localhost:3002/api/tentcate/${campId}`
+      );
 
       setData(response.data);
+      setTentData(response1.data);
     };
     getCamp();
   }, []);
-
+  //加入立即按鈕
+  // 全部資料都寫入，要用時再挑出需要的特定資料
   async function handleSumbit(e) {
     e.preventDefault();
-    let response = await axios.post("http://localhost:3002/api/booking");
-    console.log(response.data);
+    console.log("state", state);
+
+    let stateString = await JSON.stringify(state);
+    await localStorage.setItem("camp", stateString);
   }
+
   return (
     <>
       {data.map((item) => {
@@ -62,7 +72,7 @@ function CampDetail() {
           <>
             <div className="container">
               <div>
-                <PicSlider />
+                <PicSlider data={data} />
                 <div className="campName">
                   <h1>{item.camp_name}</h1>
                 </div>
@@ -176,36 +186,36 @@ function CampDetail() {
                               <br />
                               <br />
                               <div>
-                                <h3>內含裝備</h3>
+                                <h5>內含裝備</h5>
                               </div>
-                              <br />
+
                               <br />
                               <div>
-                                <h3>
+                                <h5>
                                   /全套免搭拆服務 /營地費 /帳篷/天幕 /戶外桌椅
                                   /高密度海棉床 »床120X190CMX2 /睡袋/枕頭
                                   /帳內外照明/延長線
-                                </h3>
+                                </h5>
                               </div>
-                              <br />
+
                               <br />
                               <div>
-                                <h3>餐食 不含餐食 看加購餐食菜單</h3>
+                                <h5>餐食 不含餐食 看加購餐食菜單</h5>
                               </div>
-                              <br />
+
                               <br />
                               <div>
-                                <h3>
+                                <h5>
                                   炊具擇一 烤肉架含網1片 / 卡式爐含瓦斯1罐
                                   每帳二擇一
-                                </h3>
+                                </h5>
                               </div>
-                              <br />
+
                               <br />
                               <div>
-                                <h3>帳篷尺寸 直徑270公分</h3>
+                                <h5>帳篷尺寸 直徑270公分</h5>
                               </div>
-                              <br />
+
                               <br />
                             </div>
                           </div>
@@ -247,110 +257,58 @@ function CampDetail() {
                     </div>
                   </div>
                 </div>
-                <div className="tentBlockA row">
-                  <div className="col-2">
-                    <div className="tentSmall">
-                      <img className="tentSmallPic" src={tent2} alt="" />
+
+                {tentdata.map((tent, i) => {
+                  return (
+                    <div className="tentBlockA row">
+                      <div className="col-2">
+                        <div className="tentSmall">
+                          <img
+                            className="tentSmallPic"
+                            src={`http://localhost:3002/tent-pic/img/${tent.img}`}
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                      <div className="col-1 align-self-center">
+                        <div>
+                          <h5>{tent.tent_item}</h5>
+                        </div>
+                      </div>
+                      <div className="col-3 align-self-center">
+                        <div>
+                          <h3>{tent.tent_item}</h3>
+                        </div>
+                      </div>
+                      <div className="tentTextBlock col-4 align-self-center">
+                        <div className="d-flex justify-content-center">
+                          <h5>
+                            定價:{tent.price}元/帳
+                            <br />
+                            <br />
+                            最大入住人:{tent.number}人
+                          </h5>
+                        </div>
+                      </div>
+                      <div className="col-2 align-self-center">
+                        <div className="count">
+                          <NumericInput min={1} max={100} value={1} mobile />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-1 align-self-center">
-                    <div>
-                      <h5>tent1</h5>
-                    </div>
-                  </div>
-                  <div className="col-3 align-self-center">
-                    <div>
-                      <h3>鐘型帳</h3>
-                    </div>
-                  </div>
-                  <div className="tentTextBlock col-4 align-self-center">
-                    <div className="d-flex justify-content-center">
-                      <h5>
-                        定價:1,000元/帳
-                        <br />
-                        <br />
-                        最大入住人:2人
-                      </h5>
-                    </div>
-                  </div>
-                  <div className="col-2 align-self-center">
-                    <div className="count">
-                      <NumericInput min={1} max={100} value={1} mobile />
-                    </div>
-                  </div>
-                </div>
-                <div className="tentBlockB row">
-                  <div className="col-2">
-                    <div className="tentSmall">
-                      <img className="tentSmallPic" src={tent3} alt="" />
-                    </div>
-                  </div>
-                  <div className="col-1 align-self-center">
-                    <div>
-                      <h5>tent1</h5>
-                    </div>
-                  </div>
-                  <div className="col-3 align-self-center">
-                    <div>
-                      <h3>{item.tent_item}</h3>
-                    </div>
-                  </div>
-                  <div className="tentTextBlock col-4 align-self-center">
-                    <div className=" d-flex justify-content-center">
-                      <h5>
-                        定價:1,000元/帳
-                        <br />
-                        <br />
-                        最大入住人:2人
-                      </h5>
-                    </div>
-                  </div>
-                  <div className="col-2 align-self-center">
-                    <div className="count">
-                      <NumericInput min={1} max={100} value={1} mobile />
-                    </div>
-                  </div>
-                </div>
-                <div className="tentBlockC row">
-                  <div className="col-2">
-                    <div className="tentSmall">
-                      <img className="tentSmallPic" src={tent4} alt="" />
-                    </div>
-                  </div>
-                  <div className="col-1 align-self-center">
-                    <div>
-                      <h5>tent1</h5>
-                    </div>
-                  </div>
-                  <div className="col-3 align-self-center">
-                    <div>
-                      <h3>鐘型帳</h3>
-                    </div>
-                  </div>
-                  <div className="tentTextBlock col-4 align-self-center">
-                    <div className=" d-flex justify-content-center">
-                      <h5>
-                        定價:1,000元/帳
-                        <br />
-                        <br />
-                        最大入住人:2人
-                      </h5>
-                    </div>
-                  </div>
-                  <div className="col-2 align-self-center">
-                    <div className="count">
-                      <NumericInput min={1} max={100} value={1} mobile />
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
+
                 <div className="d-flex justify-content-center">
-                  <button
-                    className="btn btn-danger btn-lg reserveBtn"
-                    type="submit"
-                    onClick={handleSumbit}
-                  >
-                    立即預定
-                  </button>
+                  <Link to="/booking">
+                    <button
+                      className="btn btn-danger btn-lg reserveBtn"
+                      type="submit"
+                      onClick={handleSumbit}
+                    >
+                      立即預定
+                    </button>
+                  </Link>
                 </div>
                 <div className="addAct">
                   <h3>加購活動</h3>
