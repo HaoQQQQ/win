@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -6,9 +6,28 @@ import axios from "axios";
 import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
 import "../style/PicSlider.scss";
-// import { baseUrl } from "./config";
 
-function PicSlider() {
+//data是CampDetail裡撈出來的
+function PicSlider({ data }) {
+  const [list, setList] = useState([]);
+  //放在useEffect裡，還有[]讓他只執行一次
+  useEffect(() => {
+    if (data.length > 0) {
+      let newList = [
+        data[0].img1,
+        data[0].img2,
+        data[0].img3,
+        data[0].img4,
+        data[0].img5,
+        data[0].img6,
+        data[0].img7,
+        data[0].img8,
+      ];
+      setList(newList);
+      console.log(newList);
+    }
+  }, []);
+
   const settings = {
     dots: true,
     dotsClass: "slick-thumb",
@@ -22,7 +41,7 @@ function PicSlider() {
           <div className="campS">
             <img
               className="campSSty"
-              src={`http://localhost:3002/camp-pic/img/camp${i + 1}.jpg`}
+              src={`http://localhost:3002/camp-pic/img/${list[i]}`}
               alt=""
             />
           </div>
@@ -31,88 +50,22 @@ function PicSlider() {
     },
   };
 
-  const [data, setData] = useState([]);
-  const { campId } = useParams();
-  useEffect(() => {
-    let getCamp = async () => {
-      let response = await axios.get(
-        `http://localhost:3002/api/camp/${campId}`
-      );
-
-      setData(response.data);
-    };
-    getCamp();
-  }, []);
-
   return (
-    <>
-      {data.map((item) => {
-        return (
-          <>
-            <div>
-              <Slider {...settings}>
-                <div className="campL">
-                  <img
-                    className="campLSty polygon"
-                    src={`http://localhost:3002/camp-pic/img/${item.img1}`}
-                    alt=""
-                  />
-                </div>
-                <div className="campL">
-                  <img
-                    className="campLSty polygon"
-                    src={`http://localhost:3002/camp-pic/img/${item.img2}`}
-                    alt=""
-                  />
-                </div>
-                <div className="campL">
-                  <img
-                    className="campLSty polygon"
-                    src={`http://localhost:3002/camp-pic/img/${item.img3}`}
-                    alt=""
-                  />
-                </div>
-                <div className="campL">
-                  <img
-                    className="campLSty polygon"
-                    src={`http://localhost:3002/camp-pic/img/${item.img4}`}
-                    alt=""
-                  />
-                </div>
-                <div className="campL">
-                  <img
-                    className="campLSty polygon"
-                    src={`http://localhost:3002/camp-pic/img/${item.img5}`}
-                    alt=""
-                  />
-                </div>
-                <div className="campL">
-                  <img
-                    className="campLSty polygon"
-                    src={`http://localhost:3002/camp-pic/img/${item.img6}`}
-                    alt=""
-                  />
-                </div>
-                <div className="campL">
-                  <img
-                    className="campLSty polygon"
-                    src={`http://localhost:3002/camp-pic/img/${item.img7}`}
-                    alt=""
-                  />
-                </div>
-                <div className="campL">
-                  <img
-                    className="campLSty polygon"
-                    src={`http://localhost:3002/camp-pic/img/${item.img8}`}
-                    alt=""
-                  />
-                </div>
-              </Slider>
+    <div>
+      <Slider {...settings}>
+        {list.map((img) => {
+          return (
+            <div className="campL">
+              <img
+                className="campLSty polygon"
+                src={`http://localhost:3002/camp-pic/img/${img}`}
+                alt=""
+              />
             </div>
-          </>
-        );
-      })}
-    </>
+          );
+        })}
+      </Slider>
+    </div>
   );
 }
 
