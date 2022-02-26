@@ -47,13 +47,26 @@ app.use("/api/camp", campRouter);
 app.get("/api/camp/:campId", async (req, res, next) => {
   //req.params.campId
   let [data, field] = await connection.execute(
-    "SELECT * FROM((((camp JOIN camp_county ON camp.campcounty_id = camp_county.Yid ) JOIN camp_pic ON camp.Cid = camp_pic.id) JOIN camp_cate1 ON camp.campcate1_id = camp_cate1.id)JOIN tent ON camp.Cid = tent.camp_id)JOIN tent_cate1 ON tent.tentcate_id = tent_cate1.id WHERE Cid=?",
+    "SELECT * FROM camp JOIN camp_county ON camp.campcounty_id = camp_county.Yid  JOIN camp_pic ON camp.Cid = camp_pic.id JOIN camp_cate1 ON camp.campcate1_id = camp_cate1.id JOIN tent_cate1 ON camp.campregion_id = tent_cate1.id WHERE Cid=?",
     [req.params.campId]
   );
   res.json(data);
 });
+
+// 帳篷資料----------------------------
+app.get("/api/tentcate/:campId", async (req, res, next) => {
+  //req.params.campId
+  let [data, field] = await connection.execute(
+    "SELECT * FROM tent JOIN tent_cate1 ON tent.tentcate_id=tent_cate1.id JOIN camp ON tent.camp_id = camp.Cid WHERE Cid=?",
+    [req.params.campId]
+  );
+  res.json(data);
+});
+//------------------------
 // 單一營地圖片
 app.use("/camp-pic", express.static(path.join(__dirname, "public")));
+// 單一帳棚圖片
+app.use("/tent-pic", express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
   console.log("在所有路由中間件的後面 -> 404");
@@ -62,7 +75,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   //  res.send("Hello Middleware");
 });
-
+// camp JOIN tent ON camp.Cid = tent.camp_id JOIN tent_cate1 ON tent.tentcate_id = tent_cate1.id
 // 錯誤中間件：放在所有中間件的後面
 // 有四個參數，是用來「捕捉」錯誤的
 app.use((err, req, res, next) => {
